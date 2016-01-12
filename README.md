@@ -1,4 +1,4 @@
-Start up on boot plugin
+Verify is App is running in foreground or visible mode. If is not be, App will be started.
 ====================
 
 ##Instalation
