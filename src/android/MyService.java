@@ -29,7 +29,7 @@ public class MyService extends Service{
 	public void startTimer(){
 		Timer timer  = new Timer();
 		this.initiliazeTimerTask();
-		timer.schedule(timerTask, 5000,30000);
+		timer.schedule(timerTask, 5000,60000);
 		Log.i("AppAlexandre","Startando timer task");
 	}
 	public void initiliazeTimerTask() {
