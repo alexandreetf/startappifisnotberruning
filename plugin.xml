@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="com.alexandreoliveira.startappifisnotberunning" version="1.0.0">
+    <name>Start App If Is not Be Running</name>
+    <description>Each x seconds, verify if is app is running or in foreground,if is not be, start!</description>
+    <license>MIT</license>
+    <keywords>phonegap, startup</keywords>
+    <repo>-</repo>
+    <issue>-</issue>
+
+    <description>
+        Starting application on device boot completed if is not running
+    </description>
+
+    <engines>
+        <engine name="cordova" version=">=2.7.0" />
+    </engines>
+
+    <!-- android -->
+    <platform name="android">
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service
+            android:enabled="true"
+            android:name="com.alexandreoliveira.startappifisnotberunning.MyService"
+           />
+            <receiver
+                android:name="com.alexandreoliveira.startappifisnotberunning.BootBroadcast">
+                <intent-filter>
+                    <action android:name="android.intent.action.BOOT_COMPLETED" />
+                </intent-filter>
+            </receiver>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+        </config-file>
+
+        <source-file src="src/android/BootBroadcast.java" target-dir="src/com.alexandreoliveira.startappifisnotberunning" />
+        <source-file src="src/android/MyService.java" target-dir="src/com.alexandreoliveira.startappifisnotberunning" />
+        <source-file src="src/android/VerifyApp.java" target-dir="src/com.alexandreoliveira.startappifisnotberunning" />
+    </platform>
+</plugin>
